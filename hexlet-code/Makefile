@@ -6,4 +6,5 @@ git:
 	git add .
 	git commit -m "add new configurate files and functions"
 	git push
+	clear
 
