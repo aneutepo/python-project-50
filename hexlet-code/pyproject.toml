@@ -1,9 +1,17 @@
 [tool.poetry]
-name = "hexlet-code"
+name = "hexlet_code"
 version = "0.1.0"
 description = ""
 authors = ["Anton <poverenosn@gmail.com>"]
 readme = "README.md"
+packages = [
+  { include = "gendiff" },
+]
+
+
+[tool.poetry.scripts]
+gendiff = "gendiff.scripts.gendiff:main"
+
 
 [tool.poetry.dependencies]
 python = "^3.10"
