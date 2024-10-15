@@ -9,3 +9,5 @@ git:
 	git push
 	clear
 
+build:
+	poetry build
