@@ -1,7 +1,8 @@
 import argparse
+from gendiff.scripts import generate_diff
 
 
-def main():
+def parsepaths():
     parser = argparse.ArgumentParser(
         prog="gendiff",
         description=(
@@ -13,8 +14,9 @@ def main():
     parser.add_argument("second_file")
     # Optional
     parser.add_argument('-f', '--format', help='set format of output')
-    parser.parse_args()
+    args = parser.parse_args()
+    generate_diff.start_calculate(args.first_file, args.second_file)
 
 
 if __name__ == "__main__":
-    main()
+    parsepaths()

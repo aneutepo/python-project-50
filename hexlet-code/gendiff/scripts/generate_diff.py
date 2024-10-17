@@ -36,7 +36,7 @@ def calculate_differences(file1, file2):
     return result
 
 
-path1 = 'hexlet-code/files/file1.json'
-path2 = 'hexlet-code/files/file2.json'
-file1, file2 = open_files(path1, path2)
-print(calculate_differences(file1, file2))
+def start_calculate(path1, path2):
+    f1, f2 = open_files(path1, path2)
+    result = calculate_differences(f1, f2)
+    print(result)
