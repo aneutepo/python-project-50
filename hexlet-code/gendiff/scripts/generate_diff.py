@@ -16,7 +16,7 @@ def calculate_differences(file1, file2):
     different_referenses = []
     k1 = file1.keys()
     k2 = file2.keys()
-    new_points_f1 = k2-k1
+    new_points_f1 = k2 - k1
     for k1, v1 in file1.items():
         if file2.get(k1, 0):
             if file1[k1] == file2[k1]:

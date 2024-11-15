@@ -11,3 +11,7 @@ git:
 
 build:
 	poetry build
+
+
+lint:
+	poetry run flake8 gendiff/scripts/generate_diff.py
