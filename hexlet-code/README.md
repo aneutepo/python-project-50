@@ -1,0 +1,1 @@
+[![Maintainability](https://api.codeclimate.com/v1/badges/a8026325a98787d6136a/maintainability)](https://codeclimate.com/github/aneutepo/python-project-50/maintainability)
