@@ -7,8 +7,8 @@ def parsepaths():
         prog="gendiff",
         description=(
             "Compares two configuration files and shows a difference."
-            )
         )
+    )
     # Аргументы
     parser.add_argument("first_file")
     parser.add_argument("second_file")

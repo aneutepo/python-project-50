@@ -40,3 +40,4 @@ def start_calculate(path1, path2):
     f1, f2 = open_files(path1, path2)
     result = calculate_differences(f1, f2)
     print(result)
+    return result
