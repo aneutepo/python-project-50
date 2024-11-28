@@ -1,10 +1,10 @@
-import json
+import yaml
 
 
 # Функция открытия файлов и сортировка их содержимого
 def open_files(filepath1, filepath2):
-    f1 = json.load(open(filepath1))
-    f2 = json.load(open(filepath2))
+    f1 = yaml.safe_load(open(filepath1))
+    f2 = yaml.safe_load(open(filepath2))
     f1 = dict(sorted(f1.items()))
     f2 = dict(sorted(f2.items()))
     return (f1, f2)
