@@ -16,8 +16,8 @@ build:
 lint:
 	poetry run flake8 gendiff/scripts/generate_diff.py
 
-	 
-	 
 gotests:
 	poetry run pytest
-	
+
+coverage:
+	poetry run pytest --cov=gendiff --cov-report xml
