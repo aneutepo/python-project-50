@@ -1,9 +1,11 @@
 from gendiff.scripts.generate_diff import open_files
+import os
 
 
 def test_open_file1():
-    path1 = "/home/anton/python-project-50/tests/fixtures/file1.json"
-    path2 = "/home/anton/python-project-50/tests/fixtures/file2.json"
+    current_directory = os.path.dirname(__file__)
+    path1 = os.path.join(current_directory, 'fixtures', "file1.json")
+    path2 = os.path.join(current_directory, 'fixtures', "file2.json")
     file1, file2 = open_files(path1, path2)
     result1 = {
         "host": "hexlet.io",
@@ -15,8 +17,9 @@ def test_open_file1():
 
 
 def test_open_file2():
-    path1 = "/home/anton/python-project-50/tests/fixtures/file1.json"
-    path2 = "/home/anton/python-project-50/tests/fixtures/file2.json"
+    current_directory = os.path.dirname(__file__)
+    path1 = os.path.join(current_directory, 'fixtures', "file1.json")
+    path2 = os.path.join(current_directory, 'fixtures', "file2.json")
     file1, file2 = open_files(path1, path2)
     result2 = {
         "timeout": 20,
