@@ -10,7 +10,7 @@ packages = [
 
 
 [tool.poetry.scripts]
-gendiff = "gendiff.scripts.gendiff:parsepaths"
+gendiff = "gendiff.scripts.cli:parsepaths"
 
 
 [tool.poetry.dependencies]

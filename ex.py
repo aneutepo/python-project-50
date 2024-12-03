@@ -1,9 +1,9 @@
-import json
+import yaml
 
-filepath1 = "/home/anton/python-project-50/tests/fixtures/file1.json"
-filepath2 = "/home/anton/python-project-50/tests/fixtures/file2.json"
-f1 = json.load(open(filepath1))
-f2 = json.load(open(filepath2))
+filepath1 = "/home/anton/python-project-50/tests/fixtures/file1.yaml"
+filepath2 = "/home/anton/python-project-50/tests/fixtures/file2.yaml"
+f1 = yaml.safe_load(open(filepath1))
+f2 = yaml.safe_load(open(filepath2))
 f1 = dict(sorted(f1.items()))
 f2 = dict(sorted(f2.items()))
 

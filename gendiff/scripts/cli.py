@@ -1,5 +1,5 @@
 import argparse
-from gendiff.scripts import generate_diff
+from gendiff.scripts.generate_diff import start_calculate
 
 
 def parsepaths():
@@ -15,7 +15,7 @@ def parsepaths():
     # Optional
     parser.add_argument('-f', '--format', help='set format of output')
     args = parser.parse_args()
-    generate_diff.start_calculate(args.first_file, args.second_file)
+    start_calculate(args.first_file, args.second_file)
 
 
 if __name__ == "__main__":
