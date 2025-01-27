@@ -1,6 +1,6 @@
 import argparse
 from pathlib import Path
-from gendiff.scripts.generate_diff import start_calculate
+from gendiff.generate_diff import start_calculate
 
 
 def parsepaths():

@@ -1,4 +1,4 @@
-from gendiff.scripts.generate_diff import open_files
+from gendiff.generate_diff import open_files
 import os
 
 

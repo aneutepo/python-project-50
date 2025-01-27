@@ -1,4 +1,4 @@
-from gendiff.scripts.generate_diff import start_calculate
+from gendiff.generate_diff import start_calculate
 import os
 import json
 
@@ -9,7 +9,6 @@ def test_calculating():
     path2 = os.path.join(current_directory, 'fixtures', "file2.json")
     result = start_calculate(path1, path2)
 
-    # Эталонный результат в виде словаря
     etalon = {'- follow': False,
               'host': 'hexlet.io',
               '- proxy': '123.234.53.22',
@@ -29,7 +28,7 @@ def test_calculating1():
               "Property 'proxy' was removed\n"
               "Property 'timeout' was removed\n"
               "Property 'timeout' was added\n"
-              "Property 'verbose' was added")  # Убедитесь, что нет лишних \n
+              "Property 'verbose' was added")  
     assert result == etalon
 
 
@@ -46,4 +45,4 @@ def test_calculating_json():
         "+ timeout": 20,
         "+ verbose": True
     }
-    assert json.loads(result) == etalon  # Сравниваем как Python словарь
+    assert json.loads(result) == etalon  
