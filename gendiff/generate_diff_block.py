@@ -19,7 +19,7 @@ def handle_key_diff(key, file1, file2, result):
     if key in file1 and key in file2:
         if isinstance(file1[key], dict) and isinstance(file2[key], dict):
             result[key] = calculate_differences(file1[key], file2[key])
-        elif file1[key] == file2[key]:
+        elif normalize_value(file1[key]) == normalize_value(file2[key]):
             result[key] = file1[key]
         else:
             result[f"- {key}"] = file1[key]
@@ -28,6 +28,15 @@ def handle_key_diff(key, file1, file2, result):
         result[f"- {key}"] = file1[key]
     elif key in file2:
         result[f"+ {key}"] = file2[key]
+
+
+def normalize_value(value):
+    """Приводим значение к стандартному виду для сравнения."""
+    if isinstance(value, bool):
+        return str(value).lower()  # Преобразуем в 'true' или 'false'
+    elif value is None:
+        return 'null'
+    return value
 
 
 def calculate_differences(file1, file2):
