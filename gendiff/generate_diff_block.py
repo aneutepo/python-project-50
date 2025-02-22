@@ -1,6 +1,5 @@
 import json
 import yaml
-import os
 
 
 def open_files(filepath1, filepath2):
@@ -49,7 +48,8 @@ def format_plain(result):
         if isinstance(value, dict):
             if "-" in value and "+" in value:
                 formatted.append(
-                    f"Property '{key}' was updated. From {value['-']} to {value['+']}"
+                    f"Property '{key}' was updated. "
+                    f"From {value['-']} to {value['+']}"
                 )
         else:
             if key.startswith("- "):
