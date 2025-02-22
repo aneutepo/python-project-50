@@ -1,4 +1,4 @@
-from gendiff.generate_diff import generate_diff
+from gendiff.generate_diff_block import generate_diff
 import os
 import json
 
