@@ -37,8 +37,8 @@ def normalize_value(value):
     elif value is None:
         return 'null'
     elif isinstance(value, float):
-        return str(value)
-    return value
+        return round(value, 6)  
+    return str(value)  # Преобразуем все остальные типы в строку для сравнения
 
 
 def calculate_differences(file1, file2):
