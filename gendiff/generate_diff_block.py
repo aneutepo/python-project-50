@@ -36,6 +36,8 @@ def normalize_value(value):
         return str(value).lower()  # Преобразуем в 'true' или 'false'
     elif value is None:
         return 'null'
+    elif isinstance(value, float):
+        return str(value)
     return value
 
 
