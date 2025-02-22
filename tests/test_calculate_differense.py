@@ -8,15 +8,14 @@ def test_calculating():
     path1 = os.path.join(current_directory, 'fixtures', "file1.json")
     path2 = os.path.join(current_directory, 'fixtures', "file2.json")
     result = start_calculate(path1, path2)
-
-    etalon = {'- follow': False,
-              'host': 'hexlet.io',
-              '- proxy': '123.234.53.22',
-              '- timeout': 50,
-              '+ timeout': 20,
-              '+ verbose': True
-              }
-    assert result == etalon
+    etalon_path = os.path.join(
+        current_directory,
+        'fixtures',
+        'etalon_start_calc.json'
+    )
+    with open(etalon_path, 'r') as etalon_file:
+        expected_result = json.load(etalon_file)
+    assert result == expected_result
 
 
 def test_calculating1():
@@ -24,12 +23,10 @@ def test_calculating1():
     path1 = os.path.join(current_directory, 'fixtures', "file1.json")
     path2 = os.path.join(current_directory, 'fixtures', "file2.json")
     result = start_calculate(path1, path2, format_type='plain')
-    etalon = ("Property 'follow' was removed\n"
-              "Property 'proxy' was removed\n"
-              "Property 'timeout' was removed\n"
-              "Property 'timeout' was added\n"
-              "Property 'verbose' was added")  
-    assert result == etalon
+    etalon_path = os.path.join(current_directory, 'fixtures', 'etalon1.txt')
+    with open(etalon_path, 'r') as etalon_file:
+        expected_result = etalon_file.read()
+    assert result == expected_result
 
 
 def test_calculating_json():
@@ -37,12 +34,9 @@ def test_calculating_json():
     path1 = os.path.join(current_directory, 'fixtures', "file1.json")
     path2 = os.path.join(current_directory, 'fixtures', "file2.json")
     result = start_calculate(path1, path2, format_type='json')
-    etalon = {
-        "- follow": False,
-        "host": "hexlet.io",
-        "- proxy": "123.234.53.22",
-        "- timeout": 50,
-        "+ timeout": 20,
-        "+ verbose": True
-    }
-    assert json.loads(result) == etalon  
+    etalon_path = os.path.join(
+        current_directory, 'fixtures', 'etalon_test_calculating_json.json'
+    )
+    with open(etalon_path, 'r') as etalon_file:
+        expected_result = json.load(etalon_file)
+    assert json.loads(result) == expected_result

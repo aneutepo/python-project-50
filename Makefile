@@ -14,7 +14,10 @@ build:
 
 
 lint:
-	poetry run flake8 gendiff/scripts/generate_diff.py
+	poetry run flake8 gendiff/generate_diff.py
+	poetry run flake8 gendiff/cli.py
+	poetry run flake8 tests/test_calculate_differense.py
+	poetry run flake8 tests/test_openfiles.py
 
 gotests:
 	poetry run pytest
