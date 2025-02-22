@@ -42,6 +42,8 @@ def normalize_value(value):
         return 'null'
     elif isinstance(value, float):
         return round(value, 6)  # Округляем числа с плавающей запятой
+    elif isinstance(value, str):
+        return value.strip().lower()
     return str(value)  # Преобразуем все остальные типы в строку для сравнения
 
 
