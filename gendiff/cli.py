@@ -1,6 +1,6 @@
 import argparse
 from pathlib import Path
-from gendiff.generate_diff import start_calculate
+from gendiff.generate_diff import generate_diff
 
 
 def parsepaths():
@@ -24,7 +24,7 @@ def parsepaths():
     path2 = current_dir / 'tests' / 'fixtures' / args.second_file
 
     # Вызов основной функции для расчета различий
-    diff = start_calculate(path1, path2, args.format)
+    diff = generate_diff(path1, path2, args.format)
     print(diff)
 
 
