@@ -1,5 +1,6 @@
 import json
 import yaml
+import os
 
 
 def open_files(filepath1, filepath2):
@@ -43,30 +44,32 @@ def format_json(result):
 
 
 def format_plain(result):
-    formatted = ""
+    formatted = []
     for key, value in result.items():
         if isinstance(value, dict):
             if "-" in value and "+" in value:
-                formatted += (
-                    f"Property '{key}' was updated. "
-                    f"From {value['-']} to {value['+']}\n"
+                formatted.append(
+                    f"Property '{key}' was updated. From {value['-']} to {value['+']}"
                 )
         else:
             if key.startswith("- "):
-                formatted += f"Property '{key[2:]}' was removed\n"
+                formatted.append(f"Property '{key[2:]}' was removed")
             elif key.startswith("+ "):
-                formatted += f"Property '{key[2:]}' was added\n"
-    return formatted.strip()
+                formatted.append(f"Property '{key[2:]}' was added")
+    return "\n".join(formatted)
 
 
 def format_stylish(result, indent=0):
-    formatted = {}
+    formatted = ""
     for key, value in result.items():
+        indent_str = " " * indent
         if isinstance(value, dict):
-            formatted[key] = format_stylish(value, indent + 4)
+            formatted += f"{indent_str}{key}: {{\n"
+            formatted += format_stylish(value, indent + 4)
+            formatted += f"{indent_str}}}\n"
         else:
-            formatted[key] = value
-    return formatted
+            formatted += f"{indent_str}{key}: {value}\n"
+    return formatted.strip()  # Strip any leading/trailing whitespace
 
 
 def start_calculate(path1, path2, format_type='stylish'):

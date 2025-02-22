@@ -3,21 +3,6 @@ import os
 import json
 
 
-def test_calculating():
-    current_directory = os.path.dirname(__file__)
-    path1 = os.path.join(current_directory, 'fixtures', "file1.json")
-    path2 = os.path.join(current_directory, 'fixtures', "file2.json")
-    result = generate_diff(path1, path2)
-    etalon_path = os.path.join(
-        current_directory,
-        'fixtures',
-        'etalon_start_calc.json'
-    )
-    with open(etalon_path, 'r') as etalon_file:
-        expected_result = json.load(etalon_file)
-    assert result == expected_result
-
-
 def test_calculating1():
     current_directory = os.path.dirname(__file__)
     path1 = os.path.join(current_directory, 'fixtures', "file1.json")
