@@ -4,10 +4,12 @@ import yaml
 
 def open_files(filepath1, filepath2):
     with open(filepath1, 'r') as file1, open(filepath2, 'r') as file2:
-        if filepath1.endswith('.json') and filepath2.endswith('.json'):
+        # Проверяем, если хотя бы один из файлов в формате JSON
+        if filepath1.endswith('.json') or filepath2.endswith('.json'):
             f1 = json.load(file1)
             f2 = json.load(file2)
         else:
+            # Если файлы не JSON, то загружаем их как YAML
             f1 = yaml.safe_load(file1)
             f2 = yaml.safe_load(file2)
     return f1, f2
