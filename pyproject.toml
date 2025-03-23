@@ -5,8 +5,7 @@ description = "gendiff — утилита для сравнения двух к�
 authors = ["Anton <poverenosn@gmail.com>"]
 readme = "README.md"
 packages = [
-  { include = "gendiff" },
-  { include = "format" }
+  { include = "gendiff" }
 ]
 
 [tool.poetry.scripts]

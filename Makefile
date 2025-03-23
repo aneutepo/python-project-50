@@ -1,21 +1,26 @@
 install:
 	poetry install
 
-test:
-	poetry run pytest
+gendiff:
+	poetry run gendiff
 
-test-coverage:
-	poetry run pytest --cov=gendiff --cov-report xml
-
-lint:
-	poetry run flake8 --extend-ignore=C901 gendiff
-
-selfcheck:
-	poetry check
-
-check: selfcheck test lint
-
-build: check
+build:
 	poetry build
 
-.PHONY: install test lint selfcheck check build
+publish:
+	poetry publish --dry-run
+
+package-install:
+	python3 -m pip install --user dist/*.whl
+    
+package-install-force:
+	python3 -m pip install --user --force-reinstall dist/*.whl
+
+make lint:
+	poetry run flake8 --extend-ignore=C901 gendiff
+    
+test-coverage:
+	poetry run pytest --cov=gendiff --cov-report xml tests/
+
+say-hello:
+	@echo 'hello'

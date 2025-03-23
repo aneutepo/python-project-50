@@ -1,2 +1,7 @@
+from gendiff.scripts.gendiff import generate_diff
+import gendiff.formaters as formaters
 
-from gendiff.gendiff import generate_diff
+__all__ = (
+    'generate_diff',
+    'formaters',
+)
