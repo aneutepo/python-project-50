@@ -35,22 +35,27 @@ def generate_diff(path1, path2, format_name='stylish'):
 def structure(first_dict, second_dict):
     diff_dict = {}
     common = set(first_dict).intersection(set(second_dict))
+
+    # Сравнение общих элементов
     if common:
         for item in common:
-            if (isinstance(first_dict[item], dict)
-               and isinstance(second_dict[item], dict)):
-
-                diff_dict[f'{item}'] = structure(
-                    first_dict[item], second_dict[item]
-                )
+            first_value = first_dict[item]
+            second_value = second_dict[item]
+            # Проверка на равенство значений, включая None
+            if first_value == second_value:
+                diff_dict[f'  =={item[4:]}'] = first_value
             else:
-                if first_dict[item] == second_dict[item]:
-                    diff_dict[f'  =={item[4:]}'] = first_dict[item]
+                if (isinstance(first_value, dict)
+                   and isinstance(second_value, dict)):
+                    diff_dict[f'{item}'] = structure(first_value, second_value)
                 else:
-                    if item in first_dict:
-                        diff_dict[f'  --{item[4:]}'] = first_dict[item]
-                    if item in second_dict:
-                        diff_dict[f'  ++{item[4:]}'] = second_dict[item]
+                    if first_value != second_value:
+                        if item in first_dict:
+                            diff_dict[f'  --{item[4:]}'] = first_value
+                        if item in second_dict:
+                            diff_dict[f'  ++{item[4:]}'] = second_value
+
+# Сравнение оставшихся элементов
     leftovers = set(first_dict).symmetric_difference(set(second_dict))
     if leftovers:
         for item in leftovers:
@@ -58,6 +63,8 @@ def structure(first_dict, second_dict):
                 diff_dict[f'  - {item[4:]}'] = first_dict[item]
             if item in second_dict:
                 diff_dict[f'  + {item[4:]}'] = second_dict[item]
+
+    # Сортировка результатов
     d_sorted = dict(
         sorted(
             diff_dict.items(),
