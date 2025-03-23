@@ -48,7 +48,8 @@ def test5():
         '{\n  - follow: false\n    host: hexlet.io\n  - proxy: 123.234.53.22\n'
         '  - timeout: 50\n  + timeout: 20\n  + verbose: true\n}'
     )
-    assert generate_diff('tests/file1.json', 'tests/file2.json').lower() == diff.lower()
+    result = generate_diff('tests/file1.json', 'tests/file2.json').lower()
+    assert result == diff.lower()
 
 
 def test_nested():
@@ -60,7 +61,11 @@ def test_nested():
 
 def test_nested_plain():
     with open('tests/result_flat.txt', 'r') as f:
-        diff_strig = generate_diff('tests/nested1.json', 'tests/nested2.json', 'plain')
+        diff_strig = generate_diff(
+            'tests/nested1.json',
+            'tests/nested2.json',
+            'plain'
+        )
         for k, v in zip(diff_strig.split('\n'), f):
             assert k.strip() == v.strip()
 
@@ -86,13 +91,19 @@ def test_of_dict():
             ('-+', 'nest', [(' ', 'key', 'value')], 'str'),
         ]),
     ]
-    res = generate_diff_tree('tests/nested_short1.json', 'tests/nested_short2.json')
+    res = generate_diff_tree(
+        'tests/nested_short1.json',
+        'tests/nested_short2.json'
+        )
     print(test_list)
     print(res)
     assert test_list == res
 
 
 def test_of_str():
-    test_tree = [(' ', 'key1', 'value1'), ('+', 'key2', [(' ', 'key3', 'value2')])]
+    test_tree = [
+        (' ', 'key1', 'value1'),
+        ('+', 'key2', [(' ', 'key3', 'value2')])
+    ]
     s = '{\n    key1: value1\n  + key2: {\n        key3: value2\n    }\n}'
     assert stylish.stringify(test_tree) == s
