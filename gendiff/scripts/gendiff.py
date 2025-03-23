@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-"""A script that runs a main function in terminal."""
 
 from gendiff.gendiff import generate_diff
 import argparse
