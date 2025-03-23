@@ -28,7 +28,8 @@ def generate_diff(path1, path2, format_name='stylish'):
     elif format_name == 'json':
         return format_json(diff)
     else:
-        return '"format_name" is not applicable, please enter a valid format name'
+        return ('"format_name" is not applicable, '
+                'please enter a valid format name')
 
 
 def structure(first_dict, second_dict):
@@ -36,8 +37,12 @@ def structure(first_dict, second_dict):
     common = set(first_dict).intersection(set(second_dict))
     if common:
         for item in common:
-            if isinstance(first_dict[item], dict) and isinstance(second_dict[item], dict):
-                diff_dict[f'{item}'] = structure(first_dict[item], second_dict[item])
+            if (isinstance(first_dict[item], dict)
+               and isinstance(second_dict[item], dict)):
+
+                diff_dict[f'{item}'] = structure(
+                    first_dict[item], second_dict[item]
+                )
             else:
                 if first_dict[item] == second_dict[item]:
                     diff_dict[f'  =={item[4:]}'] = first_dict[item]
@@ -53,7 +58,12 @@ def structure(first_dict, second_dict):
                 diff_dict[f'  - {item[4:]}'] = first_dict[item]
             if item in second_dict:
                 diff_dict[f'  + {item[4:]}'] = second_dict[item]
-    d_sorted = dict(sorted(diff_dict.items(), key=lambda x: (x[0][4:])))
+    d_sorted = dict(
+        sorted(
+            diff_dict.items(),
+            key=lambda x: (x[0][4:])
+        )
+    )
     return d_sorted
 
 
