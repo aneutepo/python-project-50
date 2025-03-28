@@ -52,13 +52,20 @@ def test5():
         '{\n  - follow: false\n    host: hexlet.io\n  - proxy: 123.234.53.22\n'
         '  - timeout: 50\n  + timeout: 20\n  + verbose: true\n}'
     )
-    result = generate_diff(f"{FIXTURES_DIR}/file1.json", f"{FIXTURES_DIR}/file2.json").lower()
+    result = generate_diff(
+    f"{FIXTURES_DIR}/file1.json",
+    f"{FIXTURES_DIR}/file2.json"
+    ).lower()
+
     assert result == diff.lower()
 
 
 def test_nested():
     with open(f"{FIXTURES_DIR}/result.txt", 'r') as f:
-        diff_string = generate_diff(f"{FIXTURES_DIR}/nested1.json", f"{FIXTURES_DIR}/nested2.json")
+        diff_string = generate_diff(
+        f"{FIXTURES_DIR}/nested1.json",
+        f"{FIXTURES_DIR}/nested2.json"
+        )
         for k, v in zip(diff_string.split('\n'), f):
             assert k.lower() == v.lower() or (k + '\n').lower() == v.lower()
 
