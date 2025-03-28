@@ -8,12 +8,12 @@
 
 # gendiff
 
-## Описание
-**gendiff** — утилита для сравнения двух конфигурационных файлов и вывода их различий.
+## Description
+**gendiff** — a utility for comparing two configuration files and displaying their differences.
 
-## Использование
+## Usage
 gendiff -h
-Выведет справочную информацию:
+This will display help information:
 usage: gendiff [-h] first_file second_file
 
 Compares two configuration files and shows a difference.
@@ -23,30 +23,30 @@ positional arguments: first_file second_file
 optional arguments: -h, --help show this help message and exit
 
 
-## Установка
-Утилита написана на Python и использует модуль `argparse` для обработки аргументов командной строки. Чтобы использовать её, убедитесь, что у вас установлен Python 3.
+## Installation
+The utility is written in Python and uses the `argparse` module for command-line argument parsing. To use it, ensure that Python 3 is installed on your system.
 
-## Пример работы
+## Example
 gendiff file1.json file2.json
 
-Выведет различия между `file1.json` и `file2.json` в удобном формате.
+This will output the differences between `file1.json` and `file2.json` in a convenient format.
 
-## Команды
-| Команда | Описание |
-|---------|----------|
-| `poetry install` | Установить зависимости |
-| `poetry shell` | Активировать виртуальное окружение |
-| `git add .` | Добавить все изменения в Git |
-| `git commit -m "add new configurate files and functions"` | Закоммитить изменения |
-| `git push` | Отправить изменения в удалённый репозиторий |
-| `clear` | Очистить консоль |
-| `poetry build` | Собрать проект |
-| `poetry run flake8 gendiff/scripts/generate_diff.py` | Запустить линтер |
-| `poetry run pytest` | Запустить тесты |
-| `poetry run pytest --cov=gendiff --cov-report xml` | Запустить тесты с покрытием |
+## Commands
+| Command | Description |
+|---------|-------------|
+| `poetry install` | Install dependencies |
+| `poetry shell` | Activate the virtual environment |
+| `git add .` | Add all changes to Git |
+| `git commit -m "add new configuration files and functions"` | Commit the changes |
+| `git push` | Push changes to the remote repository |
+| `clear` | Clear the console |
+| `poetry build` | Build the project |
+| `poetry run flake8 gendiff/scripts/generate_diff.py` | Run the linter |
+| `poetry run pytest` | Run the tests |
+| `poetry run pytest --cov=gendiff --cov-report xml` | Run the tests with coverage |
 
-## Зависимости
+## Dependencies
 - Python 3.x
-- Модуль `argparse` (входит в стандартную библиотеку Python)
+- The `argparse` module (part of the Python standard library)
 
 
