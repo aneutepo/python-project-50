@@ -22,6 +22,8 @@ positional arguments: first_file second_file
 
 optional arguments: -h, --help show this help message and exit
 
+[![asciicast](https://asciinema.org/a/vdDQ3j0FpQoBIPZ9r3hSfjCMg.svg)](https://asciinema.org/a/vdDQ3j0FpQoBIPZ9r3hSfjCMg)
+
 
 ## Installation
 The utility is written in Python and uses the `argparse` module for command-line argument parsing. To use it, ensure that Python 3 is installed on your system.
@@ -50,3 +52,13 @@ This will output the differences between `file1.json` and `file2.json` in a conv
 - The `argparse` module (part of the Python standard library)
 
 
+## Technology Stack
+
+The **gendiff** project uses the following technologies and tools:
+
+- **Programming Language**: Python 3.10+
+- **Dependency Management**: [Poetry](https://python-poetry.org/)
+- **YAML Parsing**: [PyYAML](https://pyyaml.org/)
+- **Linter**: [Flake8](https://flake8.pycqa.org/)
+- **Testing**: [pytest](https://pytest.org/)
+- **Test Coverage**: [pytest-cov](https://pytest-cov.readthedocs.io/)
