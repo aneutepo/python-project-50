@@ -22,6 +22,4 @@ make lint:
 test-coverage:
 	poetry run pytest --cov=gendiff --cov-report xml tests/
 
-say-hello:
-	@echo 'hello'
 

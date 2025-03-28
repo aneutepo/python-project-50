@@ -3,6 +3,10 @@ from gendiff.scripts.gendiff import get_dictionary_from_file
 from gendiff.scripts.gendiff import generate_diff_tree
 import gendiff.formaters.stylish as stylish
 import pytest
+from pathlib import Path
+
+
+FIXTURES_DIR = f"{Path(__file__).parent}/fixtures"
 
 
 @pytest.fixture
@@ -24,7 +28,7 @@ def dict_string_inset_1():
 
 
 def test4():
-    file1_dict = get_dictionary_from_file('tests/file1.json')
+    file1_dict = get_dictionary_from_file(f"{FIXTURES_DIR}/file1.yaml")
     assert file1_dict == {
         'host': 'hexlet.io',
         'timeout': 50,
@@ -34,12 +38,12 @@ def test4():
 
 
 def test_yaml(dictionary1):
-    file1_dict = get_dictionary_from_file('tests/file1.yaml')
+    file1_dict = get_dictionary_from_file(f"{FIXTURES_DIR}/file1.yml")
     assert file1_dict == dictionary1
 
 
 def test_yml(dictionary1):
-    file1_dict = get_dictionary_from_file('tests/file1.yml')
+    file1_dict = get_dictionary_from_file(f"{FIXTURES_DIR}/file1.yml")
     assert file1_dict == dictionary1
 
 
@@ -48,25 +52,25 @@ def test5():
         '{\n  - follow: false\n    host: hexlet.io\n  - proxy: 123.234.53.22\n'
         '  - timeout: 50\n  + timeout: 20\n  + verbose: true\n}'
     )
-    result = generate_diff('tests/file1.json', 'tests/file2.json').lower()
+    result = generate_diff(f"{FIXTURES_DIR}/file1.json", f"{FIXTURES_DIR}/file2.json").lower()
     assert result == diff.lower()
 
 
 def test_nested():
-    with open('tests/result.txt', 'r') as f:
-        diff_strig = generate_diff('tests/nested1.json', 'tests/nested2.json')
-        for k, v in zip(diff_strig.split('\n'), f):
+    with open(f"{FIXTURES_DIR}/result.txt", 'r') as f:
+        diff_string = generate_diff(f"{FIXTURES_DIR}/nested1.json", f"{FIXTURES_DIR}/nested2.json")
+        for k, v in zip(diff_string.split('\n'), f):
             assert k.lower() == v.lower() or (k + '\n').lower() == v.lower()
 
 
 def test_nested_plain():
-    with open('tests/result_flat.txt', 'r') as f:
-        diff_strig = generate_diff(
-            'tests/nested1.json',
-            'tests/nested2.json',
+    with open(f"{FIXTURES_DIR}/result_flat.txt", 'r') as f:
+        diff_string = generate_diff(
+            f"{FIXTURES_DIR}/nested1.json",
+            f"{FIXTURES_DIR}/nested2.json",
             'plain'
         )
-        for k, v in zip(diff_strig.split('\n'), f):
+        for k, v in zip(diff_string.split('\n'), f):
             assert k.strip() == v.strip()
 
 
@@ -92,8 +96,8 @@ def test_of_dict():
         ]),
     ]
     res = generate_diff_tree(
-        'tests/nested_short1.json',
-        'tests/nested_short2.json'
+        f"{FIXTURES_DIR}/nested_short1.json",
+        f"{FIXTURES_DIR}/nested_short2.json"
         )
     print(test_list)
     print(res)
