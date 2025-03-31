@@ -1,6 +1,6 @@
-from gendiff.scripts.gendiff import generate_diff
-from gendiff.scripts.gendiff import get_dictionary_from_file
-from gendiff.scripts.gendiff import generate_diff_tree
+from gendiff.diff_generator import generate_diff
+from gendiff.diff_generator import get_dictionary_from_file
+from gendiff.diff_generator import generate_diff_tree
 import gendiff.formaters.stylish as stylish
 import pytest
 from pathlib import Path
@@ -53,8 +53,8 @@ def test5():
         '  - timeout: 50\n  + timeout: 20\n  + verbose: true\n}'
     )
     result = generate_diff(
-    f"{FIXTURES_DIR}/file1.json",
-    f"{FIXTURES_DIR}/file2.json"
+        f"{FIXTURES_DIR}/file1.json",
+        f"{FIXTURES_DIR}/file2.json"
     ).lower()
 
     assert result == diff.lower()
@@ -63,8 +63,8 @@ def test5():
 def test_nested():
     with open(f"{FIXTURES_DIR}/result.txt", 'r') as f:
         diff_string = generate_diff(
-        f"{FIXTURES_DIR}/nested1.json",
-        f"{FIXTURES_DIR}/nested2.json"
+            f"{FIXTURES_DIR}/nested1.json",
+            f"{FIXTURES_DIR}/nested2.json"
         )
         for k, v in zip(diff_string.split('\n'), f):
             assert k.lower() == v.lower() or (k + '\n').lower() == v.lower()
@@ -105,7 +105,7 @@ def test_of_dict():
     res = generate_diff_tree(
         f"{FIXTURES_DIR}/nested_short1.json",
         f"{FIXTURES_DIR}/nested_short2.json"
-        )
+    )
     print(test_list)
     print(res)
     assert test_list == res
