@@ -11,6 +11,7 @@ def convertator(data, extension):
     """
     if extension not in formats:
         raise ValueError(
-            "Unsupported format. Next formats are supported: {}".format(formats.keys())
+            "Unsupported format. Next formats are supported: {}"
+            .format(formats.keys())
         )
     return formats[extension](data)
