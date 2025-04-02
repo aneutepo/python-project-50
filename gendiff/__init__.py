@@ -1,7 +1,3 @@
-from gendiff.scripts.gendiff import generate_diff
-import gendiff.formaters as formaters
+from gendiff.engine import generate_diff  # noqa: F401
 
-__all__ = (
-    'generate_diff',
-    'formaters',
-)
+__all__ = ('generate_diff')

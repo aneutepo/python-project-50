@@ -1,17 +1,14 @@
-#!/usr/bin/env python3#!/usr/bin/env python3
-import argparse
-from gendiff.diff_generator import generate_diff
+"""
+This Cli-program return differents two files
+"""
+
+from gendiff.engine import generate_diff
+from gendiff.cli import parse_cli_args
 
 
 def main():
-    parser = argparse.ArgumentParser(description='Compares two configuration '
-                                     ' files and shows a difference.')
-    parser.add_argument('first_file', type=str)
-    parser.add_argument('second_file', type=str)
-    parser.add_argument('-f', '--format', type=str, help='set format of output')
-    args = parser.parse_args()
-    res = generate_diff(args.first_file, args.second_file, args.format)
-    print(res)
+    path1, path2, format_name = parse_cli_args()
+    print(generate_diff(path1, path2, format_name))
 
 
 if __name__ == '__main__':
