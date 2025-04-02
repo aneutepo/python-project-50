@@ -1,9 +1,6 @@
 from gendiff.formatters import stylish_format, plain_format, json_format
 
-FORMATTERS = {
-    'stylish': stylish_format,
-    'plain': plain_format,
-    'json': json_format}
+FORMATTERS = {"stylish": stylish_format, "plain": plain_format, "json": json_format}
 
 
 def formatting(tree, format_):
@@ -17,6 +14,9 @@ def formatting(tree, format_):
         return (str): depends on param "format_name"
     """
     if format_ not in FORMATTERS:
-        raise ValueError('Unsupported format. Next formats are supported: {}'
-                         .format(FORMATTERS.keys()))
+        raise ValueError(
+            "Unsupported format. Next formats are supported: {}".format(
+                FORMATTERS.keys()
+            )
+        )
     return FORMATTERS[format_].format(tree)

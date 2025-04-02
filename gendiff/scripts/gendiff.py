@@ -11,5 +11,5 @@ def main():
     print(generate_diff(path1, path2, format_name))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

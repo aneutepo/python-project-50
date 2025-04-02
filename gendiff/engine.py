@@ -4,9 +4,9 @@ from gendiff.formatters.formatting import formatting
 import os
 
 
-PREFIX_ADD = '  + '
-PREFIX_DEL = '  - '
-PREFIX_NCh = '    '
+PREFIX_ADD = "  + "
+PREFIX_DEL = "  - "
+PREFIX_NCh = "    "
 
 
 def read_data(path):
@@ -20,11 +20,11 @@ def get_format(pathfile: str) -> str:
     """
     Read filename and return extension of a file
     """
-    extension = os.path.splitext(pathfile)[1].lstrip('.')
+    extension = os.path.splitext(pathfile)[1].lstrip(".")
     return extension
 
 
-def generate_diff(path1: str, path2: str, format_name='stylish') -> str:
+def generate_diff(path1: str, path2: str, format_name="stylish") -> str:
     """
     Finds differences between two files
     path1 (str): pathfile to first file
