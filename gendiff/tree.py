@@ -2,12 +2,6 @@ from collections import OrderedDict
 
 
 def get_diff(old: dict, new: dict) -> OrderedDict:  # noqa
-    """
-    Compares two python dict and generates one common OrderDict with differences.  # noqa: E501
-    old (dict): first dict
-    new (dict): second dict
-    return (OrderDict): OrderDict with differences
-    """
     res = {}
     old_keys = set(old.keys()) - set(new.keys())
     for key in old_keys:
